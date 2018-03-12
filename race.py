@@ -22,16 +22,31 @@ def ship(x,y):
 x = (display_width * 0.45)
 y = (display_height * 0.8)
 
-
+x_change = 0
 
 crashed = False
 
 while not crashed:
 	
+	#event handling loop
 	for event in pygame.event.get(): # any action during the game is recorded as a pygame event(eg. mouse clicks, keyboard strokes)
 		if event.type == pygame.QUIT:
 			crashed = True
 	#print(event)
+
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_LEFT:
+				x_change += -5
+			elif event.key == pygame.K_RIGHT:
+				x_change += 5
+
+		if event.type == pygame.KEYUP:
+			if event.key == pygame.K_LEFT:
+				x_change += 5
+			if event.key == pygame.K_RIGHT:
+				x_change += -5
+
+	x = x +  x_change
 	
 		
 	gameDisplay.fill(white)
