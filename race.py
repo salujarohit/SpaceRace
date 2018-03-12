@@ -31,7 +31,7 @@ while not crashed:
 	for event in pygame.event.get(): # any action during the game is recorded as a pygame event(eg. mouse clicks, keyboard strokes)
 		if event.type == pygame.QUIT:
 			crashed = True
-	print(event)
+	#print(event)
 	
 		
 	gameDisplay.fill(white)
