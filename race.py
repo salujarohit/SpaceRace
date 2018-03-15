@@ -20,6 +20,12 @@ clock = pygame.time.Clock() #setting game clock to track time inside game
 
 shipImg = pygame.image.load('ship.png')
 
+def score(count):
+	 font = pygame.font.SysFont(None , 25)
+	 text = font.render(("Score: " + str(count )) , True , black  )
+	 gameDisplay.blit(text , (0,0) )
+	 
+
 
 def obstacles(obsx , obsy , obswidth , obsheight , obscolor):
 	pygame.draw.rect(gameDisplay, obscolor , [obsx, obsy, obswidth, obsheight])
@@ -36,6 +42,7 @@ def text_objects(text , font):
 
 
 
+
 def message_display(text):
 	largeText = pygame.font.Font('freesansbold.ttf',50 )
 	textSurf, textRect = text_objects(text , largeText)
@@ -43,14 +50,14 @@ def message_display(text):
 	gameDisplay.blit(textSurf , textRect)
 	pygame.display.update()
 
-	time.sleep(2)
-	
+		
 
 
 
 def crash():
 	message_display('You Crashed')
-	
+
+	time.sleep(2)	
 	game_loop()
 
 
@@ -67,7 +74,11 @@ def game_loop():
 	obs_width = 100
 	obs_height = 100
 
+	dodged = 0
+
 	gameExit = False
+
+
 
 
 	while not gameExit:
@@ -114,12 +125,9 @@ def game_loop():
 
 
 
-
-
-
-
-
 		ship(x,y)
+		score(dodged)
+		
 
 		if x > display_width - ship_width  or x < 0:
 			crash() 
@@ -127,6 +135,10 @@ def game_loop():
 		if obs_starty > display_height:
 			obs_starty = -100
 			obs_startx = random.randrange(2 , display_width -102 )
+
+			dodged+= 1
+
+
 
 
 		if y < obs_starty + obs_height:
