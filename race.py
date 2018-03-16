@@ -10,6 +10,7 @@ display_height = 600
 black = (0,0,0) 
 white = (255,255,255)
 red = (255,0,0)
+obs_color = (53,115,255)
 
 ship_width = 99
 
@@ -70,7 +71,7 @@ def game_loop():
 
 	obs_startx = random.randrange(2 , display_width -102 )
 	obs_starty = -600
-	obs_speed = 7
+	obs_speed = 4 
 	obs_width = 100
 	obs_height = 100
 
@@ -120,14 +121,14 @@ def game_loop():
 
 
 
-		obstacles(obs_startx, obs_starty, obs_width, obs_height, black)
+		obstacles(obs_startx, obs_starty, obs_width, obs_height, obs_color )
 		obs_starty += obs_speed
 
 
 
 		ship(x,y)
 		score(dodged)
-		
+
 
 		if x > display_width - ship_width  or x < 0:
 			crash() 
@@ -137,10 +138,10 @@ def game_loop():
 			obs_startx = random.randrange(2 , display_width -102 )
 
 			dodged+= 1
+			obs_speed+= 1
 
 
-
-
+		
 		if y < obs_starty + obs_height:
 			#print("y crossover")
 
