@@ -9,7 +9,12 @@ display_height = 600
 
 black = (0,0,0) 
 white = (255,255,255)
-red = (255,0,0)
+red = (170,0,0)
+green = (0,170,0)
+
+bright_red = (255,0,0)
+bright_green = (0,255,00)
+
 obs_color = (53,115,255)
 
 ship_width = 99
@@ -23,7 +28,7 @@ shipImg = pygame.image.load('ship.png')
 
 def score(count):
 	 font = pygame.font.SysFont(None , 25)
-	 text = font.render(("Score: " + str(count )) , True , black  )
+	 text = font.render(("Score: " + str(count )) , True , white  )
 	 gameDisplay.blit(text , (0,0) )
 	 
 
@@ -38,7 +43,7 @@ def ship(x,y):
 	gameDisplay.blit(shipImg,(x,y))
 
 def text_objects(text , font):
-	textSurface = font.render(text , True , black )
+	textSurface = font.render(text , True , white )
 	return(textSurface , textSurface.get_rect()) 
 
 
@@ -53,13 +58,49 @@ def message_display(text):
 
 		
 
-
+def intro_text():
+	message_display('Space Race')
 
 def crash():
 	message_display('You Crashed')
 
 	time.sleep(2)	
 	game_loop()
+
+
+def game_intro():
+	intro = True
+
+	while intro:
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				pygame.quit()
+				quit()
+
+		gameDisplay.fill(black)
+		intro_text()
+
+		mouse = pygame.mouse.get_pos()
+		print(mouse)
+
+		if 250> mouse[0] > 150 and 500 > mouse[1] > 450:
+			pygame.draw.rect(gameDisplay,bright_green,(150,450,100,50))
+		else:
+			pygame.draw.rect(gameDisplay,green,(150,450,100,50))
+
+
+		if 650 > mouse[0] > 550 and 500> mouse[1] > 450:
+			pygame.draw.rect(gameDisplay,bright_red,(550,450,100,50))
+		else:
+			pygame.draw.rect(gameDisplay,red,(550,450,100,50))
+
+
+		pygame.display.update()
+		clock.tick(15)
+
+
+
+
 
 
 def game_loop():
@@ -80,6 +121,7 @@ def game_loop():
 	gameExit = False
 
 
+	ship_speed = 0 
 
 
 	while not gameExit:
@@ -103,9 +145,9 @@ def game_loop():
 
 			if event.type == pygame.KEYDOWN:
 				if event.key == pygame.K_LEFT:
-					x_change += -5
+					x_change += -5 - ship_speed
 				elif event.key == pygame.K_RIGHT:
-					x_change += 5
+					x_change += 5 + ship_speed
 
 			if event.type == pygame.KEYUP:
 				if event.key == pygame.K_LEFT:
@@ -116,7 +158,7 @@ def game_loop():
 		x = x +  x_change
 		
 			
-		gameDisplay.fill(white)
+		gameDisplay.fill(black)
 
 
 
@@ -138,7 +180,9 @@ def game_loop():
 			obs_startx = random.randrange(2 , display_width -102 )
 
 			dodged+= 1
-			obs_speed+= 1
+			obs_speed+= 0.5
+			ship_speed+= 0.5
+
 
 
 		
@@ -156,7 +200,7 @@ def game_loop():
 		clock.tick(60) #updating the window at 60 fps
 
 
-
+game_intro()
 game_loop( )
 
 pygame.quit()
