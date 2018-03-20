@@ -19,6 +19,8 @@ obs_color = (53,115,255)
 
 ship_width = 99
 
+pause = False
+
 
 gameDisplay = pygame.display.set_mode((display_width,display_height)) #Initialize window or screen to run the game
 pygame.display.set_caption('Space Race')
@@ -57,24 +59,53 @@ def message_display(text):
 	pygame.display.update()
 
 		
+def pause_text():
+	message_display('Paused')
 
 def intro_text():
 	message_display('Space Race')
 
-def crash():
+def crash_text():
 	message_display('You Crashed')
 
-	time.sleep(2)	
-	game_loop()
+def crash():
+
+	crash_text()
+	
+	while True:
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				pygame.quit()
+				quit()
+
+		#gameDisplay.fill(black)
+		
+
+		button('Go Again',150,450,100,50,green,bright_green, game_loop)
+		button('Quit',550,450,100,50,red,bright_red, quitgame)
+
+		pygame.display.update()
+		clock.tick(15)
+
+	
 
 
-def button(msg,x,y,w,h,ic,ac):
+def button(msg,x,y,w,h,ic,ac, action = None):
 
 	mouse = pygame.mouse.get_pos()
 		#print(mouse)
 
+	click = pygame.mouse.get_pressed()
+	#print(click)
+
+
+
 	if x + w > mouse[0] > x and y + h > mouse[1] > y:
 		pygame.draw.rect(gameDisplay,ac,(x,y,w,h))
+		if click[0] == 1 and action != None:
+			action()
+
+
 	else:
 		pygame.draw.rect(gameDisplay,ic,(x,y,w,h))
 
@@ -83,10 +114,40 @@ def button(msg,x,y,w,h,ic,ac):
 	textRect.center = ( (x+(w/2)), (y+ (h/2)) )
 	gameDisplay.blit(textSurf,textRect)
 
+def unpause():
+	global pause
+	pause = False
 
 
+def paused():
+
+	
+
+	global pause
+	while pause:
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				pygame.quit()
+				quit()
+
+		gameDisplay.fill(black)
+
+
+		pause_text()	
+
+		button('Continue',150,450,100,50,green,bright_green, unpause)
+		button('Quit',550,450,100,50,red,bright_red, quitgame)
+
+		pygame.display.update()
+		clock.tick(15)
+
+
+def quitgame():
+	pygame.quit()
+	quit()
 
 def game_intro():
+
 	intro = True
 
 	while intro:
@@ -98,8 +159,8 @@ def game_intro():
 		gameDisplay.fill(black)
 		intro_text()
 
-		button('GO',150,450,100,50,green,bright_green)
-		button('Quit',550,450,100,50,red,bright_red)
+		button('GO',150,450,100,50,green,bright_green, game_loop)
+		button('Quit',550,450,100,50,red,bright_red, quitgame)
 
 		pygame.display.update()
 		clock.tick(15)
@@ -110,6 +171,8 @@ def game_intro():
 
 
 def game_loop():
+
+	global pause
 
 	x = (display_width * 0.45)
 	y = (display_height * 0.8)
@@ -145,6 +208,7 @@ def game_loop():
 			if event.type == pygame.KEYDOWN:
 				if event.key == pygame.K_ESCAPE:
 					pygame.quit()
+					quit()
 		
 
 		#print(event)
@@ -154,6 +218,12 @@ def game_loop():
 					x_change += -5 - ship_speed
 				elif event.key == pygame.K_RIGHT:
 					x_change += 5 + ship_speed
+				elif event.key == pygame.K_p:
+					pause = True
+					paused()
+
+
+
 
 			if event.type == pygame.KEYUP:
 				if event.key == pygame.K_LEFT:
@@ -197,9 +267,6 @@ def game_loop():
 
 			if x > obs_startx and x < obs_startx + obs_width or x + ship_width > obs_startx and x + ship_width < obs_startx + obs_width:
 				crash()
-
-
-
 
 		
 		pygame.display.update()
