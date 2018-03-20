@@ -68,6 +68,24 @@ def crash():
 	game_loop()
 
 
+def button(msg,x,y,w,h,ic,ac):
+
+	mouse = pygame.mouse.get_pos()
+		#print(mouse)
+
+	if x + w > mouse[0] > x and y + h > mouse[1] > y:
+		pygame.draw.rect(gameDisplay,ac,(x,y,w,h))
+	else:
+		pygame.draw.rect(gameDisplay,ic,(x,y,w,h))
+
+	smallText = pygame.font.Font("freesansbold.ttf",20)
+	textSurf,textRect =text_objects(msg ,smallText)
+	textRect.center = ( (x+(w/2)), (y+ (h/2)) )
+	gameDisplay.blit(textSurf,textRect)
+
+
+
+
 def game_intro():
 	intro = True
 
@@ -80,20 +98,8 @@ def game_intro():
 		gameDisplay.fill(black)
 		intro_text()
 
-		mouse = pygame.mouse.get_pos()
-		print(mouse)
-
-		if 250> mouse[0] > 150 and 500 > mouse[1] > 450:
-			pygame.draw.rect(gameDisplay,bright_green,(150,450,100,50))
-		else:
-			pygame.draw.rect(gameDisplay,green,(150,450,100,50))
-
-
-		if 650 > mouse[0] > 550 and 500> mouse[1] > 450:
-			pygame.draw.rect(gameDisplay,bright_red,(550,450,100,50))
-		else:
-			pygame.draw.rect(gameDisplay,red,(550,450,100,50))
-
+		button('GO',150,450,100,50,green,bright_green)
+		button('Quit',550,450,100,50,red,bright_red)
 
 		pygame.display.update()
 		clock.tick(15)
