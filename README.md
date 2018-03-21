@@ -22,9 +22,9 @@ You are the captain of a space ship that is wandering in the free space. Your ob
 2. ESC can be used to escape the gam at any point of time.
 3. "P" can be used to pause the game while playing.
 
-### Language Used 
+###### Language Used 
 Python 3.6.4
-### Library Used 
+###### Library Used 
 Pygame 1.9.3
 
 
