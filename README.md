@@ -1,4 +1,4 @@
-# Project Title
+# Space Race
 
 SpaceRace is a game built using Python's Pygame library.
 
