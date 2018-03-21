@@ -23,9 +23,9 @@ You are the captain of a space ship that is wandering in the free space. Your ob
 3. "P" can be used to pause the game while playing.
 
 ###### Language Used 
-Python 3.6.4
+######Python 3.6.4
 ###### Library Used 
-Pygame 1.9.3
+#####Pygame 1.9.3
 
 
 
