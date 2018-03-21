@@ -29,7 +29,9 @@ Pygame 1.9.3
 
 ## Preview
 
-![Screen](https://github.com/salujarohit/SpaceRace/blob/master/ScreenShots/S2.png)
-
+![Screen1](https://github.com/salujarohit/SpaceRace/blob/master/ScreenShots/S2.png)
+![Screen2](https://github.com/salujarohit/SpaceRace/blob/master/ScreenShots/S1.png)
+![Screen3](https://github.com/salujarohit/SpaceRace/blob/master/ScreenShots/S3.png)
+![Screen4](https://github.com/salujarohit/SpaceRace/blob/master/ScreenShots/S4.png)
 
 
