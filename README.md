@@ -27,5 +27,9 @@ Python 3.6.4
 #### Library Used 
 Pygame 1.9.3
 
+## Preview
+
+https://github.com/salujarohit/SpaceRace/blob/master/ScreenShots/S2.png
+
 
 
