@@ -12,7 +12,7 @@ You are the captain of a space ship that is wandering in the free space. Your ob
 2. Use the arrow keys (Right and Left) to navigate and avoid the blocks.
 3. Collision with the block will result in a crash.
 4. The ship needs to be within the boudary of the screen at all times. Collsion with the screen boudary ( left and right) will    result in a crash.
-5. As you progress,the speed of the incoming blocks will increase.
+5. *As you progress,the speed of the incoming blocks will increase.*
 6. As you progress by avoiding more and more blocks the ship will also gain the ability to move faster. (Control sensitivity      increases).
 7. The game can be paused at any point of time.
 
