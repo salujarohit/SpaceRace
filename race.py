@@ -22,6 +22,7 @@ ship_width = 99
 pause = False
 
 
+
 gameDisplay = pygame.display.set_mode((display_width,display_height)) #Initialize window or screen to run the game
 pygame.display.set_caption('Space Race')
 clock = pygame.time.Clock() #setting game clock to track time inside game
@@ -36,7 +37,10 @@ def score(count):
 
 
 def obstacles(obsx , obsy , obswidth , obsheight , obscolor):
+
 	pygame.draw.rect(gameDisplay, obscolor , [obsx, obsy, obswidth, obsheight])
+
+		
 
 
 
@@ -192,6 +196,8 @@ def game_loop():
 
 	ship_speed = 0 
 
+	
+
 
 	while not gameExit:
 		
@@ -237,9 +243,10 @@ def game_loop():
 		gameDisplay.fill(black)
 
 
-
+		
 
 		obstacles(obs_startx, obs_starty, obs_width, obs_height, obs_color )
+			
 		obs_starty += obs_speed
 
 
@@ -258,7 +265,8 @@ def game_loop():
 			dodged+= 1
 			obs_speed+= 0.5
 			ship_speed+= 0.5
-
+			obs_width+=4
+			
 
 
 		
