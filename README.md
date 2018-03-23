@@ -14,7 +14,7 @@ You are the captain of a space ship that is wandering in the free space. Your ob
 4. The ship needs to be within the boudary of the screen at all times. Collsion with the screen boudary ( left and right) will    result in a crash.
 5. **As you progress,the speed of the incoming blocks will increase.**
 6. **As you progress by avoiding more and more blocks the ship will also gain the ability to move faster. (Control sensitivity increases).**
-7. **As you progress,the size of the block will also keep increasing.**
+7. **As you progress,the size of the incoming blocks will also increase.**
 8. The game can be paused at any point of time.
 
 ## Controls
