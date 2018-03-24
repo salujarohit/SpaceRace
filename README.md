@@ -3,10 +3,11 @@
 SpaceRace is a game built using Python's Pygame library.
 
 ## Installation
-1. Install pygame on yout machine.
+1. Install pygame on your machine.
    [Installation help](https://www.pygame.org/wiki/GettingStarted#Pygame%20Installation)
 2. Download the SpaceRace folder.(or use git clone)
-3. Then 
+3. Navigate to the project directory in terminal.
+4. python3 race.py or pythonw race.py
 
 ## Game Play
 
