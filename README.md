@@ -2,6 +2,12 @@
 
 SpaceRace is a game built using Python's Pygame library.
 
+## Installation
+1. Install pygame on yout machine.
+   ![Installation help](https://www.pygame.org/wiki/GettingStarted#Pygame%20Installation)
+2. Download the SpaceRace folder.(or use git clone)
+3. Then 
+
 ## Game Play
 
 You are the captain of a space ship that is wandering in the free space. Your objective is to protect the ship from the asteroids ( square asteroids )  suspended in the space. Collision with an asteroid is fatal. 
